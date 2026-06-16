@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.npm-cache-local/
+
+# Build output
+dist/
+coverage/
+*.tgz
+
+# Local config and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local n8n/test artifacts
+.n8n/
+local-n8n/
+test-output/
+fixtures/private/
