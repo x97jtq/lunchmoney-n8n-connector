@@ -19,7 +19,7 @@ This backlog turns `docs/implementation-plan.md` into sprint-sized work. Each sp
 
 Goal: create a clean, verification-friendly foundation with no real financial data or secrets.
 
-- [ ] `[REL, PL]` Clone or initialize `x97jtq/lunchmoney-n8n-connector` locally.
+- [x] `[REL, PL]` Clone or initialize `x97jtq/lunchmoney-n8n-connector` locally.
 - [ ] `[REL, IMPL]` Scaffold the package with `npm create @n8n/node`.
 - [x] `[REL]` Set package name to `n8n-nodes-lunchmoney`.
 - [x] `[REL]` Confirm package keyword includes `n8n-community-node-package`.
@@ -39,7 +39,7 @@ Exit criteria:
 - [x] `[REL, REV]` Repo builds from a fresh install.
 - [x] `[SEC, REV]` No real LunchMoney or Postman data is committed.
 - [x] `[REL, TEST]` CI exists, even if tests are minimal.
-- [ ] `[REL, PL]` Initial commit is pushed to GitHub.
+- [x] `[REL, PL]` Initial commit is pushed to GitHub.
 
 ## Sprint 1: Postman Contract Extraction
 
