@@ -1,0 +1,64 @@
+{
+  "name": "LunchMoney Example - Category and Tag Sync",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "55e95d8a-5c61-4b72-8d48-53e92bdab45f",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [220, 320]
+    },
+    {
+      "parameters": { "resource": "category", "operation": "getAll", "returnAll": true },
+      "id": "e04a4c36-85b1-4f68-8315-1ac473d078cb",
+      "name": "Get Categories",
+      "type": "n8n-nodes-lunchmoney.lunchMoney",
+      "typeVersion": 1,
+      "position": [460, 220]
+    },
+    {
+      "parameters": { "jsCode": "return items.map(({ json }) => ({ json: { reference_type: 'category', id: json.id, name: json.name ?? '' } }));" },
+      "id": "e80fd416-e89d-419c-9fa5-92f4b172422d",
+      "name": "Normalize Categories",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 220]
+    },
+    {
+      "parameters": { "resource": "tag", "operation": "getAll", "returnAll": true },
+      "id": "80a064ee-c5b3-4757-a9e0-e2214cc2644c",
+      "name": "Get Tags",
+      "type": "n8n-nodes-lunchmoney.lunchMoney",
+      "typeVersion": 1,
+      "position": [460, 420]
+    },
+    {
+      "parameters": { "jsCode": "return items.map(({ json }) => ({ json: { reference_type: 'tag', id: json.id, name: json.name ?? '' } }));" },
+      "id": "fd8777dc-32f7-4ae5-a1db-7570d40984d1",
+      "name": "Normalize Tags",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 420]
+    },
+    {
+      "parameters": { "mode": "append" },
+      "id": "924753c3-fe93-415e-9a36-bafdebf68b8a",
+      "name": "Combine Reference Data",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [940, 320]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": { "main": [[{ "node": "Get Categories", "type": "main", "index": 0 }, { "node": "Get Tags", "type": "main", "index": 0 }]] },
+    "Get Categories": { "main": [[{ "node": "Normalize Categories", "type": "main", "index": 0 }]] },
+    "Normalize Categories": { "main": [[{ "node": "Combine Reference Data", "type": "main", "index": 0 }]] },
+    "Get Tags": { "main": [[{ "node": "Normalize Tags", "type": "main", "index": 0 }]] },
+    "Normalize Tags": { "main": [[{ "node": "Combine Reference Data", "type": "main", "index": 1 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "tags": []
+}

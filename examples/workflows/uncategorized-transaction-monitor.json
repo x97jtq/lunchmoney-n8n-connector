@@ -1,0 +1,50 @@
+{
+  "name": "LunchMoney Example - Uncategorized Transaction Monitor",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a11e8ae2-564b-44be-86ad-75227a2e4177",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [260, 300]
+    },
+    {
+      "parameters": {
+        "resource": "transaction",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 50,
+        "filters": {
+          "start_date": "2025-01-01",
+          "end_date": "2025-01-31",
+          "include_pending": false,
+          "include_files": false
+        }
+      },
+      "id": "9df9d182-55eb-4be9-a384-79101d451830",
+      "name": "Get Synthetic Transactions",
+      "type": "n8n-nodes-lunchmoney.lunchMoney",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.filter(({ json }) => json.category_id === null || json.category_id === undefined || json.category_id === '');"
+      },
+      "id": "4badfdb4-f6ec-4415-a9bb-55fb4ade5a8d",
+      "name": "Keep Uncategorized Only",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [740, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": { "main": [[{ "node": "Get Synthetic Transactions", "type": "main", "index": 0 }]] },
+    "Get Synthetic Transactions": { "main": [[{ "node": "Keep Uncategorized Only", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "tags": []
+}

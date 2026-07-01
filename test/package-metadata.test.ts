@@ -17,4 +17,21 @@ describe('package metadata', () => {
 			'dist/nodes/LunchMoney/LunchMoney.node.js',
 		]);
 	});
+
+	it('limits the published package to runtime artifacts and release documents', () => {
+		expect(packageJson.files).toEqual([
+			'dist',
+			'README.md',
+			'CHANGELOG.md',
+			'LICENSE',
+		]);
+		expect(packageJson).not.toHaveProperty('dependencies');
+	});
+
+	it('publishes publicly with npm provenance', () => {
+		expect(packageJson.publishConfig).toEqual({
+			access: 'public',
+			provenance: true,
+		});
+	});
 });

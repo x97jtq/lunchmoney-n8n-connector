@@ -1,0 +1,49 @@
+{
+  "name": "LunchMoney Example - Monthly Transaction Export",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8ac92cd8-53be-4c7c-a87f-4c245ef31fd7",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [260, 300]
+    },
+    {
+      "parameters": {
+        "resource": "transaction",
+        "operation": "getAll",
+        "returnAll": true,
+        "filters": {
+          "start_date": "2025-01-01",
+          "end_date": "2025-01-31",
+          "include_pending": false,
+          "include_files": false
+        }
+      },
+      "id": "a319bd01-eb16-43d7-87dc-54409db5cc4d",
+      "name": "Get Synthetic Month",
+      "type": "n8n-nodes-lunchmoney.lunchMoney",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(({ json }) => ({ json: { date: json.date ?? '', payee: json.payee ?? '', amount: json.amount ?? '', currency: json.currency ?? '', category: json.category_name ?? '', notes: json.notes ?? '' } }));"
+      },
+      "id": "470aa245-ef09-4d74-96c0-c7f99aa74a1f",
+      "name": "Prepare Export Rows",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [740, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": { "main": [[{ "node": "Get Synthetic Month", "type": "main", "index": 0 }]] },
+    "Get Synthetic Month": { "main": [[{ "node": "Prepare Export Rows", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "tags": []
+}

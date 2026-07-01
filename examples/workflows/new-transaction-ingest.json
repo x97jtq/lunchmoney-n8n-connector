@@ -1,0 +1,44 @@
+{
+  "name": "LunchMoney Example - New Transaction Ingest (Mock Only)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7daa14bf-0e68-415a-b43e-a65287863583",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [260, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { date: '2025-01-15', payee: 'Example Market', amount: '-12.34', currency: 'usd', notes: 'Synthetic example only' } }];"
+      },
+      "id": "cefe1758-91da-4791-b93e-0f6876fb4fe6",
+      "name": "Build Fake Transaction",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "resource": "transaction",
+        "operation": "insert",
+        "transactions": "={{ [$json] }}"
+      },
+      "id": "278414bb-c654-41e8-8d85-346d7cee66d9",
+      "name": "Insert Into Mock Only",
+      "type": "n8n-nodes-lunchmoney.lunchMoney",
+      "typeVersion": 1,
+      "position": [740, 300],
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Manual Trigger": { "main": [[{ "node": "Build Fake Transaction", "type": "main", "index": 0 }]] },
+    "Build Fake Transaction": { "main": [[{ "node": "Insert Into Mock Only", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "tags": []
+}

@@ -20,7 +20,7 @@ This backlog turns `docs/implementation-plan.md` into sprint-sized work. Each sp
 Goal: create a clean, verification-friendly foundation with no real financial data or secrets.
 
 - [x] `[REL, PL]` Clone or initialize `x97jtq/lunchmoney-n8n-connector` locally.
-- [ ] `[REL, IMPL]` Scaffold the package with `npm create @n8n/node`.
+- [x] `[REL, IMPL]` Scaffold the package with `npm create @n8n/node`.
 - [x] `[REL]` Set package name to `n8n-nodes-lunchmoney`.
 - [x] `[REL]` Confirm package keyword includes `n8n-community-node-package`.
 - [x] `[REL, ARCH]` Confirm `package.json` includes the `n8n` attribute for nodes and credentials.
@@ -45,325 +45,333 @@ Exit criteria:
 
 Goal: convert the Postman LunchMoney V2 collection/spec into an implementation contract.
 
-- [ ] `[PCA]` Read Postman instructions before using Postman MCP.
-- [ ] `[PCA]` Confirm workspace `lunchmoney` is accessible.
-- [ ] `[PCA]` Confirm collection `Lunch Money API - v2` is accessible.
-- [ ] `[PCA]` Confirm OpenAPI spec `Lunch Money API - v2` is accessible.
-- [ ] `[PCA]` Fetch the lightweight collection map.
-- [ ] `[PCA]` Fetch targeted request details for every endpoint.
-- [ ] `[PCA, DOCS]` Create `docs/lunchmoney-endpoint-matrix.md`.
-- [ ] `[PCA, ARCH]` Record each endpoint's resource, operation, method, path, auth, params, body, response, and pagination behavior.
-- [ ] `[PCA, SEC, ARCH]` Classify every endpoint as read-only, write, bulk write, destructive, binary/file, or custom-call candidate.
-- [ ] `[PCA, PL]` Mark each endpoint as `v1`, `v1.1`, or `deferred`.
-- [ ] `[PCA, TEST, SEC]` Identify which endpoints can be tested safely against Postman's static mock server.
-- [ ] `[PCA, ARCH]` Identify gaps where Postman request details differ from public docs or existing client libraries.
+- [x] `[PCA]` Read Postman instructions before using Postman MCP.
+- [x] `[PCA]` Confirm workspace `lunchmoney` is accessible.
+- [x] `[PCA]` Confirm collection `Lunch Money API - v2` is accessible.
+- [x] `[PCA]` Confirm OpenAPI spec `Lunch Money API - v2` is accessible.
+- [x] `[PCA]` Fetch the lightweight collection map.
+- [x] `[PCA]` Fetch targeted request details for every endpoint.
+- [x] `[PCA, DOCS]` Create `docs/lunchmoney-endpoint-matrix.md`.
+- [x] `[PCA, ARCH]` Record each endpoint's resource, operation, method, path, auth, params, body, response, and pagination behavior.
+- [x] `[PCA, SEC, ARCH]` Classify every endpoint as read-only, write, bulk write, destructive, binary/file, or custom-call candidate.
+- [x] `[PCA, PL]` Mark each endpoint as `v1`, `v1.1`, or `deferred`.
+- [x] `[PCA, TEST, SEC]` Identify which endpoints can be tested safely against Postman's static mock server.
+- [x] `[PCA, ARCH]` Identify gaps where Postman request details differ from public docs or existing client libraries.
 
 Exit criteria:
 
-- [ ] `[PCA, REV]` Every request in the Postman collection is represented in the endpoint matrix.
-- [ ] `[SEC, REV]` Destructive endpoints are clearly marked.
-- [ ] `[ARCH, REV]` No implementation requires guessing method/path/parameter names.
+- [x] `[PCA, REV]` Every request in the Postman collection is represented in the endpoint matrix.
+- [x] `[SEC, REV]` Destructive endpoints are clearly marked.
+- [x] `[ARCH, REV]` No implementation requires guessing method/path/parameter names.
 
 ## Sprint 2: API Readiness and Risk Report
 
 Goal: assess how agent- and connector-friendly the LunchMoney V2 contract is.
 
-- [ ] `[ARA]` Apply the `postman-api-readiness` 8-pillar framework to the LunchMoney V2 spec/collection.
-- [ ] `[ARA, DOCS]` Create `docs/lunchmoney-api-readiness.md`.
-- [ ] `[ARA]` Score metadata: operation IDs, summaries, descriptions, tags.
-- [ ] `[ARA]` Score errors: 4xx, 5xx, 429, schemas, retry guidance.
-- [ ] `[ARA]` Score introspection: parameter types, required fields, enums, examples.
-- [ ] `[ARA]` Score naming: path style, method semantics, naming consistency.
-- [ ] `[ARA]` Score predictability: response schemas, envelopes, pagination, dates, nullability.
-- [ ] `[ARA]` Score documentation: auth, rate limits, overview, links, contact.
-- [ ] `[ARA]` Score performance: rate-limit headers, cache headers, bulk support, async patterns.
-- [ ] `[ARA]` Score discoverability: OpenAPI version, server URLs, versioning, health checks.
-- [ ] `[ARA, ARCH, SEC]` List the top connector-impacting gaps.
-- [ ] `[ARA, ARCH, SEC]` Add a connector mitigation for each high-impact gap.
+- [x] `[ARA]` Apply the `postman-api-readiness` 8-pillar framework to the LunchMoney V2 spec/collection.
+- [x] `[ARA, DOCS]` Create `docs/lunchmoney-api-readiness.md`.
+- [x] `[ARA]` Score metadata: operation IDs, summaries, descriptions, tags.
+- [x] `[ARA]` Score errors: 4xx, 5xx, 429, schemas, retry guidance.
+- [x] `[ARA]` Score introspection: parameter types, required fields, enums, examples.
+- [x] `[ARA]` Score naming: path style, method semantics, naming consistency.
+- [x] `[ARA]` Score predictability: response schemas, envelopes, pagination, dates, nullability.
+- [x] `[ARA]` Score documentation: auth, rate limits, overview, links, contact.
+- [x] `[ARA]` Score performance: rate-limit headers, cache headers, bulk support, async patterns.
+- [x] `[ARA]` Score discoverability: OpenAPI version, server URLs, versioning, health checks.
+- [x] `[ARA, ARCH, SEC]` List the top connector-impacting gaps.
+- [x] `[ARA, ARCH, SEC]` Add a connector mitigation for each high-impact gap.
 
 Exit criteria:
 
-- [ ] `[ARA, REV]` Readiness score is documented.
-- [ ] `[ARA, ARCH, REV]` Connector implementation risks are documented.
-- [ ] `[ARA, REV]` The report distinguishes LunchMoney API limitations from connector responsibilities.
+- [x] `[ARA, REV]` Readiness score is documented.
+- [x] `[ARA, ARCH, REV]` Connector implementation risks are documented.
+- [x] `[ARA, REV]` The report distinguishes LunchMoney API limitations from connector responsibilities.
 
 ## Sprint 3: Credentials and Core HTTP Layer
 
 Goal: implement safe authentication and shared request behavior.
 
-- [ ] `[IMPL, ARCH]` Create `LunchMoneyApi.credentials.ts`.
-- [ ] `[IMPL, SEC]` Add required secret `apiKey` field.
-- [ ] `[IMPL, ARCH]` Add advanced `baseUrl` field defaulting to `https://api.lunchmoney.dev/v2`.
-- [ ] `[IMPL, ARCH]` Implement bearer auth using n8n credential helpers.
-- [ ] `[IMPL, TEST]` Add credential test using `GET /me`.
-- [ ] `[IMPL, ARCH]` Create shared request helper.
-- [ ] `[IMPL, ARCH]` Create shared pagination helper.
-- [ ] `[IMPL, SEC]` Create shared API error normalization helper.
-- [ ] `[IMPL, SEC]` Ensure errors redact `Authorization` and request bodies by default.
-- [ ] `[TEST, IMPL]` Add unit tests for credential field shape.
-- [ ] `[TEST, IMPL, SEC]` Add unit tests for auth header behavior through mocks.
-- [ ] `[TEST, SEC]` Add unit tests for safe error redaction.
+- [x] `[IMPL, ARCH]` Create `LunchMoneyApi.credentials.ts`.
+- [x] `[IMPL, SEC]` Add required secret `apiKey` field.
+- [x] `[IMPL, ARCH]` Add advanced `baseUrl` field defaulting to `https://api.lunchmoney.dev/v2`.
+- [x] `[IMPL, ARCH]` Implement bearer auth using n8n credential helpers.
+- [x] `[IMPL, TEST]` Add credential test using `GET /me`.
+- [x] `[IMPL, ARCH]` Create shared request helper.
+- [x] `[IMPL, ARCH]` Create shared pagination helper.
+- [x] `[IMPL, SEC]` Create shared API error normalization helper.
+- [x] `[IMPL, SEC]` Ensure errors redact `Authorization` and request bodies by default.
+- [x] `[TEST, IMPL]` Add unit tests for credential field shape.
+- [x] `[TEST, IMPL, SEC]` Add unit tests for auth header behavior through mocks.
+- [x] `[TEST, SEC]` Add unit tests for safe error redaction.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Credential test works against mock/test base URL.
-- [ ] `[SEC, REV]` Core helper can make authenticated requests without exposing secrets.
-- [ ] `[TEST, REV]` Unit tests cover auth and error redaction.
+- [x] `[TEST, REV]` Credential test works against mock/test base URL.
+- [x] `[SEC, REV]` Core helper can make authenticated requests without exposing secrets.
+- [x] `[TEST, REV]` Unit tests cover auth and error redaction.
 
 ## Sprint 4: Minimal Node Skeleton
 
 Goal: create a usable n8n node shell with the first safe operation.
 
-- [ ] `[IMPL, ARCH]` Create `LunchMoney.node.ts`.
-- [ ] `[IMPL, ARCH]` Add resource selector.
-- [ ] `[IMPL, ARCH]` Add operation selector.
-- [ ] `[IMPL, TEST]` Add `User > Get current user`.
-- [ ] `[IMPL, ARCH]` Wire node execution through the shared request helper.
-- [ ] `[IMPL, ARCH]` Return n8n items in standard shape.
-- [ ] `[TEST, IMPL]` Add unit test for `User > Get current user`.
-- [ ] `[DOCS, SEC]` Add README section for credential setup.
-- [ ] `[DOCS, TEST]` Add local n8n smoke-test instructions.
+- [x] `[IMPL, ARCH]` Create `LunchMoney.node.ts`.
+- [x] `[IMPL, ARCH]` Add resource selector.
+- [x] `[IMPL, ARCH]` Add operation selector.
+- [x] `[IMPL, TEST]` Add `User > Get current user`.
+- [x] `[IMPL, ARCH]` Wire node execution through the shared request helper.
+- [x] `[IMPL, ARCH]` Return n8n items in standard shape.
+- [x] `[TEST, IMPL]` Add unit test for `User > Get current user`.
+- [x] `[DOCS, SEC]` Add README section for credential setup.
+- [x] `[DOCS, TEST]` Add local n8n smoke-test instructions.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Node appears in local n8n.
-- [ ] `[TEST, REV]` Credential can be selected.
-- [ ] `[TEST, REV]` `User > Get current user` runs against mock/test environment.
+- [x] `[TEST, REV]` Node appears in local n8n.
+- [x] `[TEST, REV]` Credential can be selected.
+- [x] `[TEST, REV]` `User > Get current user` runs against mock/test environment.
 
 ## Sprint 5: Read-Only Reference Resources
 
 Goal: implement low-risk read operations that are useful in most workflows.
 
-- [ ] `[IMPL, TEST]` Implement `Categories > Get many`.
-- [ ] `[IMPL, TEST]` Implement `Categories > Get`.
-- [ ] `[IMPL, TEST]` Implement `Tags > Get many`.
-- [ ] `[IMPL, TEST]` Implement `Tags > Get`.
-- [ ] `[IMPL, TEST]` Implement `Manual Accounts > Get many`.
-- [ ] `[IMPL, TEST]` Implement `Manual Accounts > Get`.
-- [ ] `[IMPL, TEST]` Implement `Plaid Accounts > Get many`.
-- [ ] `[IMPL, TEST]` Implement `Plaid Accounts > Get`.
-- [ ] `[IMPL, TEST]` Implement `Recurring Items > Get many`.
-- [ ] `[IMPL, TEST]` Implement `Recurring Items > Get`.
-- [ ] `[IMPL, TEST]` Implement `Budgets > Get settings`.
-- [ ] `[IMPL, TEST]` Implement `Summary > Get`.
-- [ ] `[IMPL, ARCH]` Add `Return All` and `Limit` where list endpoints support them.
-- [ ] `[TEST, IMPL]` Add unit tests for each operation's request construction.
-- [ ] `[TEST, SEC]` Add fake response fixtures for each resource.
+- [x] `[IMPL, TEST]` Implement `Categories > Get many`.
+- [x] `[IMPL, TEST]` Implement `Categories > Get`.
+- [x] `[IMPL, TEST]` Implement `Tags > Get many`.
+- [x] `[IMPL, TEST]` Implement `Tags > Get`.
+- [x] `[IMPL, TEST]` Implement `Manual Accounts > Get many`.
+- [x] `[IMPL, TEST]` Implement `Manual Accounts > Get`.
+- [x] `[IMPL, TEST]` Implement `Plaid Accounts > Get many`.
+- [x] `[IMPL, TEST]` Implement `Plaid Accounts > Get`.
+- [x] `[IMPL, TEST]` Implement `Recurring Items > Get many`.
+- [x] `[IMPL, TEST]` Implement `Recurring Items > Get`.
+- [x] `[IMPL, TEST]` Implement `Budgets > Get settings`.
+- [x] `[IMPL, TEST]` Implement `Summary > Get`.
+- [x] `[IMPL, ARCH]` Add `Return All` and `Limit` where list endpoints support them.
+- [x] `[TEST, IMPL]` Add unit tests for each operation's request construction.
+- [x] `[TEST, SEC]` Add fake response fixtures for each resource.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` All read-only reference operations pass unit tests.
-- [ ] `[ARCH, REV]` List operations output one item per entity where possible.
-- [ ] `[SEC, REV]` No test fixture contains real account or transaction data.
+- [x] `[TEST, REV]` All read-only reference operations pass unit tests.
+- [x] `[ARCH, REV]` List operations output one item per entity where possible.
+- [x] `[SEC, REV]` No test fixture contains real account or transaction data.
 
 ## Sprint 6: Transactions Read Support
 
 Goal: implement transaction reads carefully because this is the highest-value and highest-sensitivity data path.
 
-- [ ] `[IMPL, TEST]` Implement `Transactions > Get many`.
-- [ ] `[IMPL, TEST]` Implement `Transactions > Get`.
-- [ ] `[IMPL, PCA, ARCH]` Add supported transaction filters from the Postman contract.
-- [ ] `[IMPL, ARCH, TEST]` Add pagination behavior for transaction list.
-- [ ] `[IMPL, ARCH]` Add `Return All` and `Limit`.
-- [ ] `[TEST, SEC]` Add fake transaction fixtures.
-- [ ] `[TEST, IMPL]` Add tests for date filters.
-- [ ] `[TEST, IMPL]` Add tests for pagination.
-- [ ] `[TEST, IMPL]` Add tests for one-item-per-transaction output.
-- [ ] `[DOCS, SEC]` Add README warning that transaction outputs may contain sensitive financial data.
+- [x] `[IMPL, TEST]` Implement `Transactions > Get many`.
+- [x] `[IMPL, TEST]` Implement `Transactions > Get`.
+- [x] `[IMPL, PCA, ARCH]` Add supported transaction filters from the Postman contract.
+- [x] `[IMPL, ARCH, TEST]` Add pagination behavior for transaction list.
+- [x] `[IMPL, ARCH]` Add `Return All` and `Limit`.
+- [x] `[TEST, SEC]` Add fake transaction fixtures.
+- [x] `[TEST, IMPL]` Add tests for date filters.
+- [x] `[TEST, IMPL]` Add tests for pagination.
+- [x] `[TEST, IMPL]` Add tests for one-item-per-transaction output.
+- [x] `[DOCS, SEC]` Add README warning that transaction outputs may contain sensitive financial data.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Transaction reads work against mock/test environment.
-- [ ] `[TEST, REV]` Pagination and limit behavior are covered by tests.
-- [ ] `[SEC, REV]` No real transaction data appears in fixtures, docs, or logs.
+- [x] `[TEST, REV]` Transaction reads work against mock/test environment.
+- [x] `[TEST, REV]` Pagination and limit behavior are covered by tests.
+- [x] `[SEC, REV]` No real transaction data appears in fixtures, docs, or logs.
 
 ## Sprint 7: Safe Create and Update Operations
 
 Goal: add non-destructive write operations with deterministic request bodies.
 
-- [ ] `[IMPL, TEST]` Implement `Categories > Create`.
-- [ ] `[IMPL, TEST]` Implement `Categories > Update`.
-- [ ] `[IMPL, TEST]` Implement `Manual Accounts > Create`.
-- [ ] `[IMPL, TEST]` Implement `Manual Accounts > Update`.
-- [ ] `[IMPL, TEST]` Implement `Plaid Accounts > Trigger fetch`.
-- [ ] `[IMPL, TEST]` Implement `Tags > Create`.
-- [ ] `[IMPL, TEST]` Implement `Tags > Update`.
-- [ ] `[IMPL, TEST]` Implement `Budgets > Upsert`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Insert one or more`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Update`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Update many`.
-- [ ] `[IMPL, ARCH, TEST]` Add validation for required fields.
-- [ ] `[IMPL, TEST, SEC]` Add duplicate ID checks where applicable.
-- [ ] `[IMPL, SEC, TEST]` Add conservative bulk item limit for multi-transaction writes.
-- [ ] `[TEST, IMPL]` Add unit tests for each request body.
-- [ ] `[TEST, IMPL]` Add unit tests for invalid input.
+- [x] `[IMPL, TEST]` Implement `Categories > Create`.
+- [x] `[IMPL, TEST]` Implement `Categories > Update`.
+- [x] `[IMPL, TEST]` Implement `Manual Accounts > Create`.
+- [x] `[IMPL, TEST]` Implement `Manual Accounts > Update`.
+- [x] `[IMPL, TEST]` Implement `Plaid Accounts > Trigger fetch`.
+- [x] `[IMPL, TEST]` Implement `Tags > Create`.
+- [x] `[IMPL, TEST]` Implement `Tags > Update`.
+- [x] `[IMPL, TEST]` Implement `Budgets > Upsert`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Insert one or more`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Update`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Update many`.
+- [x] `[IMPL, ARCH, TEST]` Add validation for required fields.
+- [x] `[IMPL, TEST, SEC]` Add duplicate ID checks where applicable.
+- [x] `[IMPL, SEC, TEST]` Add conservative bulk item limit for multi-transaction writes.
+- [x] `[TEST, IMPL]` Add unit tests for each request body.
+- [x] `[TEST, IMPL]` Add unit tests for invalid input.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Write operations produce contract-correct requests.
-- [ ] `[TEST, REV]` Invalid inputs fail before API calls.
-- [ ] `[SEC, REV]` Bulk operations have guards.
-- [ ] `[SEC, REV]` No live production writes are performed.
+- [x] `[TEST, REV]` Write operations produce contract-correct requests.
+- [x] `[TEST, REV]` Invalid inputs fail before API calls.
+- [x] `[SEC, REV]` Bulk operations have guards.
+- [x] `[SEC, REV]` No live production writes are performed.
 
 ## Sprint 8: Destructive Operations and Guardrails
 
 Goal: add delete/destructive behavior only with explicit user intent.
 
-- [ ] `[IMPL, SEC, ARCH]` Add reusable `confirmDestructiveOperation` field helper.
-- [ ] `[IMPL, TEST, SEC]` Implement `Categories > Delete`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Manual Accounts > Delete`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Tags > Delete`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Budgets > Delete`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Delete`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Bulk delete`.
-- [ ] `[IMPL, TEST, SEC]` Add empty-list guard for bulk delete.
-- [ ] `[IMPL, TEST, SEC]` Add duplicate ID guard for bulk delete.
-- [ ] `[IMPL, TEST, SEC]` Add max-count guard for bulk delete.
-- [ ] `[TEST, SEC]` Add tests proving destructive operations fail without confirmation.
-- [ ] `[TEST, SEC]` Add tests proving destructive operations pass with confirmation.
-- [ ] `[DOCS, SEC]` Add README destructive-operation safety section.
+- [x] `[IMPL, SEC, ARCH]` Add reusable `confirmDestructiveOperation` field helper.
+- [x] `[IMPL, TEST, SEC]` Implement `Categories > Delete`.
+- [x] `[IMPL, TEST, SEC]` Implement `Manual Accounts > Delete`.
+- [x] `[IMPL, TEST, SEC]` Implement `Tags > Delete`.
+- [x] `[IMPL, TEST, SEC]` Implement `Budgets > Delete`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Delete`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Bulk delete`.
+- [x] `[IMPL, TEST, SEC]` Add empty-list guard for bulk delete.
+- [x] `[IMPL, TEST, SEC]` Add duplicate ID guard for bulk delete.
+- [x] `[IMPL, TEST, SEC]` Add max-count guard for bulk delete.
+- [x] `[TEST, SEC]` Add tests proving destructive operations fail without confirmation.
+- [x] `[TEST, SEC]` Add tests proving destructive operations pass with confirmation.
+- [x] `[DOCS, SEC]` Add README destructive-operation safety section.
 
 Exit criteria:
 
-- [ ] `[SEC, REV]` Every destructive operation requires explicit confirmation.
-- [ ] `[TEST, REV]` Bulk delete cannot run with empty or malformed input.
-- [ ] `[TEST, REV]` Tests cover both refused and allowed paths.
+- [x] `[SEC, REV]` Every destructive operation requires explicit confirmation.
+- [x] `[TEST, REV]` Bulk delete cannot run with empty or malformed input.
+- [x] `[TEST, REV]` Tests cover both refused and allowed paths.
 
 ## Sprint 9: Advanced Transaction Operations
 
 Goal: add transaction grouping and split support after core behavior is stable.
 
-- [ ] `[IMPL, TEST]` Implement `Transactions > Create group`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Delete group`.
-- [ ] `[IMPL, TEST]` Implement `Transactions > Split`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Unsplit`.
-- [ ] `[PCA, IMPL, TEST]` Confirm request/response behavior against Postman contract.
-- [ ] `[IMPL, TEST]` Add required-field validation.
-- [ ] `[IMPL, SEC]` Add destructive confirmation where appropriate.
-- [ ] `[TEST, SEC]` Add fake fixtures and unit tests.
-- [ ] `[DOCS, ARCH]` Document output shapes.
+- [x] `[IMPL, TEST]` Implement `Transactions > Create group`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Delete group`.
+- [x] `[IMPL, TEST]` Implement `Transactions > Split`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Unsplit`.
+- [x] `[PCA, IMPL, TEST]` Confirm request/response behavior against Postman contract.
+- [x] `[IMPL, TEST]` Add required-field validation.
+- [x] `[IMPL, SEC]` Add destructive confirmation where appropriate.
+- [x] `[TEST, SEC]` Add fake fixtures and unit tests.
+- [x] `[DOCS, ARCH]` Document output shapes.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Advanced transaction operations pass unit tests.
-- [ ] `[DOCS, REV]` Split/group behavior is documented.
-- [ ] `[SEC, REV]` Destructive/irreversible paths are guarded.
+- [x] `[TEST, REV]` Advanced transaction operations pass unit tests.
+- [x] `[DOCS, REV]` Split/group behavior is documented.
+- [x] `[SEC, REV]` Destructive/irreversible paths are guarded.
 
 ## Sprint 10: Attachments
 
 Goal: support transaction file attachments only after core financial operations are stable.
 
-- [ ] `[PCA, ARCH]` Re-check Postman contract for attachment upload and download URL behavior.
-- [ ] `[IMPL, TEST]` Implement `Transactions > Attach file`.
-- [ ] `[IMPL, TEST]` Implement `Transactions > Get attachment URL`.
-- [ ] `[IMPL, TEST, SEC]` Implement `Transactions > Delete attachment`.
-- [ ] `[IMPL, ARCH, TEST]` Add n8n binary-data handling.
-- [ ] `[TEST, SEC]` Add synthetic file fixtures only.
-- [ ] `[TEST, IMPL]` Add tests for binary input validation.
-- [ ] `[IMPL, SEC]` Add destructive confirmation for attachment delete.
-- [ ] `[DOCS, SEC]` Add README notes warning against committing receipts or real financial files.
+- [x] `[PCA, ARCH]` Re-check Postman contract for attachment upload and download URL behavior.
+- [x] `[IMPL, TEST]` Implement `Transactions > Attach file`.
+- [x] `[IMPL, TEST]` Implement `Transactions > Get attachment URL`.
+- [x] `[IMPL, TEST, SEC]` Implement `Transactions > Delete attachment`.
+- [x] `[IMPL, ARCH, TEST]` Add n8n binary-data handling.
+- [x] `[TEST, SEC]` Add synthetic file fixtures only.
+- [x] `[TEST, IMPL]` Add tests for binary input validation.
+- [x] `[IMPL, SEC]` Add destructive confirmation for attachment delete.
+- [x] `[DOCS, SEC]` Add README notes warning against committing receipts or real financial files.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Attachment operations work with synthetic files.
-- [ ] `[SEC, REV]` No real receipt/document data is used.
-- [ ] `[DOCS, REV]` Binary behavior is documented.
+- [x] `[TEST, REV]` Attachment operations work with synthetic files.
+- [x] `[SEC, REV]` No real receipt/document data is used.
+- [x] `[DOCS, REV]` Binary behavior is documented.
 
 ## Sprint 11: Custom API Call
 
 Goal: provide a safe escape hatch for V2 alpha changes without encouraging unsafe arbitrary HTTP calls.
 
-- [ ] `[IMPL, ARCH, SEC]` Implement `Custom API Call`.
-- [ ] `[IMPL, ARCH]` Add method selector.
-- [ ] `[IMPL, ARCH]` Add endpoint path field.
-- [ ] `[IMPL, ARCH]` Add query parameter collection.
-- [ ] `[IMPL, ARCH]` Add JSON body input.
-- [ ] `[IMPL, SEC]` Use LunchMoney credential and configured base URL.
-- [ ] `[IMPL, SEC]` Block full external URLs by default.
-- [ ] `[IMPL, SEC, TEST]` Validate endpoint path starts with `/`.
-- [ ] `[TEST, SEC]` Add tests for safe path validation.
-- [ ] `[TEST, SEC]` Add tests that external URLs are rejected.
-- [ ] `[DOCS, SEC]` Document appropriate use cases.
+- [x] `[IMPL, ARCH, SEC]` Implement `Custom API Call`.
+- [x] `[IMPL, ARCH]` Add method selector.
+- [x] `[IMPL, ARCH]` Add endpoint path field.
+- [x] `[IMPL, ARCH]` Add query parameter collection.
+- [x] `[IMPL, ARCH]` Add JSON body input.
+- [x] `[IMPL, SEC]` Use LunchMoney credential and configured base URL.
+- [x] `[IMPL, SEC]` Block full external URLs by default.
+- [x] `[IMPL, SEC, TEST]` Validate endpoint path starts with `/`.
+- [x] `[TEST, SEC]` Add tests for safe path validation.
+- [x] `[TEST, SEC]` Add tests that external URLs are rejected.
+- [x] `[DOCS, SEC]` Document appropriate use cases.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Custom call can hit LunchMoney paths.
-- [ ] `[SEC, REV]` Custom call cannot silently send credentials to arbitrary external hosts.
-- [ ] `[TEST, REV]` Tests cover path safety.
+- [x] `[TEST, REV]` Custom call can hit LunchMoney paths.
+- [x] `[SEC, REV]` Custom call cannot silently send credentials to arbitrary external hosts.
+- [x] `[TEST, REV]` Tests cover path safety.
 
 ## Sprint 12: Local n8n Smoke Testing
 
 Goal: verify the connector in a real n8n install without production data.
 
-- [ ] `[TEST, REL]` Install package in a clean local n8n environment.
-- [ ] `[TEST, SEC]` Create mock credential.
-- [ ] `[TEST]` Run `User > Get current user`.
-- [ ] `[TEST]` Run category/tag/account list operations.
-- [ ] `[TEST, SEC]` Run transaction list against mock/test data.
-- [ ] `[TEST, ARCH]` Confirm output shapes in n8n UI.
-- [ ] `[TEST, SEC]` Confirm destructive operations refuse to run without confirmation.
-- [ ] `[DOCS, TEST]` Create smoke-test notes in `docs/local-smoke-test.md`.
-- [ ] `[TEST, PL]` Record any n8n UX issues as follow-up tasks.
+- [x] `[TEST, REL]` Install package in a clean local n8n environment.
+- [x] `[TEST, SEC]` Create mock credential.
+- [x] `[TEST]` Run `User > Get current user`.
+- [x] `[TEST]` Run category/tag/account list operations.
+- [x] `[TEST, SEC]` Run transaction list against mock/test data.
+- [x] `[TEST, ARCH]` Confirm output shapes in n8n UI.
+- [x] `[TEST, SEC]` Confirm destructive operations refuse to run without confirmation.
+- [x] `[DOCS, TEST]` Create smoke-test notes in `docs/local-smoke-test.md`.
+- [x] `[TEST, PL]` Record any n8n UX issues as follow-up tasks.
+
+Follow-up tasks:
+
+- [x] `[TEST, ARCH, PL]` Re-run stored execution output inspection in the n8n UI when browser automation is available.
+- [x] `[DOCS, UX, PL]` Document the `<N8N_USER_FOLDER>/.n8n/nodes` community-package install path.
+- [x] `[TEST, UX, PL]` Review missing accessible labels on LunchMoney credential fields in n8n.
 
 Exit criteria:
 
-- [ ] `[TEST, REV]` Local n8n can load the node.
-- [ ] `[TEST, REV]` Read operations work in the UI.
-- [ ] `[SEC, REV]` Destructive safeguards are visible and effective.
+- [x] `[TEST, REV]` Local n8n can load the node.
+- [x] `[TEST, REV]` Read operations work in the UI.
+- [x] `[SEC, REV]` Destructive safeguards are visible and effective.
 
 ## Sprint 13: Example Workflows and Documentation
 
 Goal: make the connector understandable and useful to users.
 
-- [ ] `[DOCS, REL]` Expand README installation instructions.
-- [ ] `[DOCS, SEC]` Add credential setup guide.
-- [ ] `[DOCS, ARCH]` Add supported operations table.
-- [ ] `[DOCS, SEC]` Add mock/test/prod environment guidance.
-- [ ] `[DOCS, PCA]` Add alpha API compatibility note.
-- [ ] `[DOCS, SEC]` Add privacy and data-protection guidance.
-- [ ] `[DOCS, TEST]` Add troubleshooting section.
-- [ ] `[DOCS, TEST, SEC]` Create example workflow: monthly transaction export.
-- [ ] `[DOCS, TEST, SEC]` Create example workflow: uncategorized transaction monitor.
-- [ ] `[DOCS, TEST]` Create example workflow: category/tag sync.
-- [ ] `[DOCS, TEST]` Create example workflow: budget summary report.
-- [ ] `[DOCS, TEST, SEC]` Create example workflow: new transaction ingest.
-- [ ] `[TEST, DOCS]` Validate example workflows with n8n validation tooling where available.
+- [x] `[DOCS, REL]` Expand README installation instructions.
+- [x] `[DOCS, SEC]` Add credential setup guide.
+- [x] `[DOCS, ARCH]` Add supported operations table.
+- [x] `[DOCS, SEC]` Add mock/test/prod environment guidance.
+- [x] `[DOCS, PCA]` Add alpha API compatibility note.
+- [x] `[DOCS, SEC]` Add privacy and data-protection guidance.
+- [x] `[DOCS, TEST]` Add troubleshooting section.
+- [x] `[DOCS, TEST, SEC]` Create example workflow: monthly transaction export.
+- [x] `[DOCS, TEST, SEC]` Create example workflow: uncategorized transaction monitor.
+- [x] `[DOCS, TEST]` Create example workflow: category/tag sync.
+- [x] `[DOCS, TEST]` Create example workflow: budget summary report.
+- [x] `[DOCS, TEST, SEC]` Create example workflow: new transaction ingest.
+- [x] `[TEST, DOCS]` Validate example workflows with n8n validation tooling where available.
 
 Exit criteria:
 
-- [ ] `[DOCS, REV]` README is useful without reading source code.
-- [ ] `[SEC, REV]` Example workflows use fake data only.
-- [ ] `[SEC, REV]` Workflows are inactive by default.
-- [ ] `[DOCS, REV]` Docs explain destructive operation behavior.
+- [x] `[DOCS, REV]` README is useful without reading source code.
+- [x] `[SEC, REV]` Example workflows use fake data only.
+- [x] `[SEC, REV]` Workflows are inactive by default.
+- [x] `[DOCS, REV]` Docs explain destructive operation behavior.
 
 ## Sprint 14: Release Hardening
 
 Goal: prepare for a private alpha and later public npm release.
 
-- [ ] `[REL, TEST]` Run full lint.
-- [ ] `[REL, TEST]` Run full typecheck.
-- [ ] `[REL, TEST]` Run full unit test suite.
-- [ ] `[TEST, REL]` Run local n8n smoke test.
-- [ ] `[SEC, REV]` Run secret scan.
-- [ ] `[REL]` Run `npm pack`.
-- [ ] `[REL, SEC]` Inspect package tarball contents.
-- [ ] `[SEC, REL]` Confirm no `.env`, logs, screenshots, real fixtures, or credentials are included.
-- [ ] `[REL, ARCH]` Confirm runtime dependencies are absent or justified.
-- [ ] `[REL, DOCS]` Add changelog.
-- [ ] `[REL]` Add npm provenance publish workflow.
-- [ ] `[REL, PL]` Configure npm trusted publisher or token-based publish secret.
+- [x] `[REL, TEST]` Run full lint.
+- [x] `[REL, TEST]` Run full typecheck.
+- [x] `[REL, TEST]` Run full unit test suite.
+- [x] `[TEST, REL]` Run local n8n smoke test.
+- [x] `[SEC, REV]` Run secret scan.
+- [x] `[REL]` Run `npm pack`.
+- [x] `[REL, SEC]` Inspect package tarball contents.
+- [x] `[SEC, REL]` Confirm no `.env`, logs, screenshots, real fixtures, or credentials are included.
+- [x] `[REL, ARCH]` Confirm runtime dependencies are absent or justified.
+- [x] `[REL, DOCS]` Add changelog.
+- [x] `[REL]` Add npm provenance publish workflow.
 
 Exit criteria:
 
-- [ ] `[REL, SEC, REV]` Package is safe to publish as alpha.
-- [ ] `[REL, SEC, REV]` Package tarball contains only intended files.
-- [ ] `[REL, REV]` GitHub Actions can build the package.
+- [x] `[REL, SEC, REV]` Package is safe to publish as alpha.
+- [x] `[REL, SEC, REV]` Package tarball contains only intended files.
+- [x] `[REL, REV]` GitHub Actions can build the package.
 
 ## Sprint 15: Alpha Release and Verification Prep
 
 Goal: publish safely and prepare for n8n verification.
 
+- [ ] `[REL, PL]` Configure temporary `NPM_TOKEN` GitHub Actions secret for the initial publish.
 - [ ] `[REL, PL]` Publish `0.1.0-alpha.0` via GitHub Actions.
+- [ ] `[REL, PL]` Configure npm trusted publisher after the package exists on npm.
+- [ ] `[REL, PL]` Remove the GitHub Actions `NPM_TOKEN` secret and revoke the temporary npm token.
 - [ ] `[TEST, REL]` Install alpha package in clean n8n instance.
 - [ ] `[TEST]` Run read-only smoke tests.
 - [ ] `[TEST, SEC]` Run safe write tests against test budget only.
@@ -384,16 +392,16 @@ Exit criteria:
 
 Run these throughout the project, not only at release time.
 
-- [ ] `[SEC, REV]` Never commit real LunchMoney tokens.
-- [ ] `[SEC, REV]` Never commit Postman API keys.
-- [ ] `[SEC, REV]` Never commit real transaction/account/category/tag/budget data.
-- [ ] `[SEC, REV]` Never commit real receipt or attachment files.
-- [ ] `[DOCS, TEST, SEC]` Keep all examples synthetic.
-- [ ] `[TEST, SEC]` Keep live integration tests local-only and opt-in.
-- [ ] `[SEC, PL]` Do not run production API calls without explicit confirmation.
-- [ ] `[SEC, PL]` Do not activate n8n workflows without explicit confirmation.
-- [ ] `[REL, PL]` Do not publish npm packages without explicit confirmation.
-- [ ] `[PCA, SEC, PL]` Do not publish Postman documentation or mocks without explicit confirmation.
+- [x] `[SEC, REV]` Never commit real LunchMoney tokens.
+- [x] `[SEC, REV]` Never commit Postman API keys.
+- [x] `[SEC, REV]` Never commit real transaction/account/category/tag/budget data.
+- [x] `[SEC, REV]` Never commit real receipt or attachment files.
+- [x] `[DOCS, TEST, SEC]` Keep all examples synthetic.
+- [x] `[TEST, SEC]` Keep live integration tests local-only and opt-in.
+- [x] `[SEC, PL]` Do not run production API calls without explicit confirmation.
+- [x] `[SEC, PL]` Do not activate n8n workflows without explicit confirmation.
+- [x] `[REL, PL]` Do not publish npm packages without explicit confirmation.
+- [x] `[PCA, SEC, PL]` Do not publish Postman documentation or mocks without explicit confirmation.
 
 ## Recommended First Execution Slice
 

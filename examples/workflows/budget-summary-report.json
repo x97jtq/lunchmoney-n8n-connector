@@ -1,0 +1,39 @@
+{
+  "name": "LunchMoney Example - Budget Summary Report",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1c25005c-c383-40ac-a9bd-7040e64bff05",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [260, 300]
+    },
+    {
+      "parameters": { "resource": "summary", "operation": "get" },
+      "id": "373fe965-1651-417a-9baa-2d6ac04c4384",
+      "name": "Get Synthetic Summary",
+      "type": "n8n-nodes-lunchmoney.lunchMoney",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(({ json }) => ({ json: { report_period: 'synthetic-example', income: json.income ?? null, spending: json.spending ?? null, savings: json.savings ?? null, currency: json.currency ?? null } }));"
+      },
+      "id": "84e07b83-179d-4878-8015-1e036d70f9f0",
+      "name": "Prepare Summary Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [740, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": { "main": [[{ "node": "Get Synthetic Summary", "type": "main", "index": 0 }]] },
+    "Get Synthetic Summary": { "main": [[{ "node": "Prepare Summary Report", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "tags": []
+}

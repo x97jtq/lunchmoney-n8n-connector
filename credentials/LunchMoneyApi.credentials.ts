@@ -25,7 +25,7 @@ export class LunchMoneyApi implements ICredentialType {
 			description: 'LunchMoney bearer token. Use mock or test-budget tokens during development.',
 		},
 		{
-			displayName: 'Base URL',
+			displayName: 'Base URL (Advanced)',
 			name: 'baseUrl',
 			type: 'string',
 			default: 'https://api.lunchmoney.dev/v2',
